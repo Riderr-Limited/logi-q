@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand col */}
           <div className="space-y-4">
             <div className="flex items-center gap-2.5">
-              <Image src="/logo.png" alt="LOGI-Q Technologies" width={110} height={36} className="h-8 w-auto object-contain brightness-0 invert opacity-80" />
+              <Image src="/logo.png" alt="LOGI-Q Technologies" width={110} height={36} className="h-8 w-auto object-contain opacity-90" />
             </div>
             <p className="text-zinc-600 text-[12px] leading-relaxed max-w-[200px]">
               Digital solutions that power the future. Registered in Nigeria.

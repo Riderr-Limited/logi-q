@@ -16,42 +16,40 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_0_#e4e4e7]"
+          ? "bg-[#0d1410]/95 backdrop-blur-md border-b border-white/[0.06]"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-[68px] flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-10 h-[70px] flex items-center justify-between">
 
-        {/* Logo */}
+        {/* Logo — always visible since navbar stays dark */}
         <a href="#" className="flex items-center">
           <Image
             src="/logo.png"
             alt="LOGI-Q Technologies"
-            width={120}
-            height={40}
-            className={`h-9 w-auto object-contain transition-all ${scrolled ? "brightness-100" : "brightness-0 invert"}`}
+            width={130}
+            height={44}
+            className="h-9 w-auto object-contain"
             priority
           />
         </a>
 
-        {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-7">
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <a
               key={l.label}
               href={l.href}
-              className={`text-[13px] font-medium transition-colors ${
-                scrolled ? "text-zinc-500 hover:text-zinc-900" : "text-white/70 hover:text-white"
-              }`}
+              className="text-[13px] font-medium text-white/60 hover:text-white transition-colors"
             >
               {l.label}
             </a>
@@ -60,33 +58,33 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-3">
           <a
-            href="#contact"
-            className={`text-[13px] font-medium transition-colors ${
-              scrolled ? "text-zinc-500 hover:text-zinc-900" : "text-white/70 hover:text-white"
-            }`}
+            href="mailto:contact@riderr.ng"
+            className="text-[13px] font-medium text-white/60 hover:text-white transition-colors"
           >
             Contact
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center h-8 px-4 rounded-[6px] bg-[#16a34a] hover:bg-[#15803d] text-white text-[12px] font-semibold transition-colors shadow-sm"
+            className="inline-flex items-center h-[34px] px-4 rounded-[7px] bg-[#16a34a] hover:bg-[#15803d] text-white text-[12px] font-semibold transition-colors"
           >
             Get Started
           </a>
         </div>
 
-        {/* Mobile */}
+        {/* Mobile trigger */}
         <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            className={`md:hidden p-1.5 rounded-md transition-colors ${
-              scrolled ? "text-zinc-700 hover:bg-zinc-100" : "text-white hover:bg-white/10"
-            }`}
-          >
+          <SheetTrigger className="md:hidden p-1.5 text-white/70 hover:text-white transition-colors">
             <Menu className="w-5 h-5" />
           </SheetTrigger>
-          <SheetContent side="right" className="w-[280px] bg-white border-l border-zinc-100 pt-14 px-6">
-            <div className="flex items-center gap-2.5 mb-8 pb-6 border-b border-zinc-100">
-              <Image src="/logo.png" alt="LOGI-Q Technologies" width={110} height={36} className="h-8 w-auto object-contain" />
+          <SheetContent side="right" className="w-[280px] bg-[#0d1410] border-l border-white/[0.07] pt-14 px-6">
+            <div className="mb-8 pb-6 border-b border-white/[0.07]">
+              <Image
+                src="/logo.png"
+                alt="LOGI-Q Technologies"
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <nav className="flex flex-col gap-1">
               {links.map((l) => (
@@ -94,7 +92,7 @@ export default function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="py-2.5 px-2 text-[14px] font-medium text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 rounded-md transition-colors"
+                  className="py-2.5 px-2 text-[14px] font-medium text-white/60 hover:text-white hover:bg-white/[0.05] rounded-md transition-colors"
                 >
                   {l.label}
                 </a>
@@ -102,7 +100,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="mt-4 flex items-center justify-center h-10 rounded-[7px] bg-[#16a34a] hover:bg-[#15803d] text-white text-sm font-semibold transition-colors"
+                className="mt-5 flex items-center justify-center h-10 rounded-[7px] bg-[#16a34a] hover:bg-[#15803d] text-white text-sm font-semibold transition-colors"
               >
                 Get Started
               </a>
