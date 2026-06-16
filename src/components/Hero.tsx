@@ -1,66 +1,80 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Package, Zap, Globe } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 overflow-hidden">
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNNjAgMEgwdjYwaDYwVjB6TTEgMWg1OHY1OEgxVjF6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9Ii4wMyIvPjwvZz48L3N2Zz4=')] opacity-40" />
+    <section className="relative min-h-screen bg-[#0a0f0d] flex flex-col justify-center overflow-hidden">
 
-      {/* Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Noise texture overlay */}
+      <div className="absolute inset-0 opacity-[0.025]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`,
+      }} />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="space-y-8">
-          <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/30 text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full">
-            🇳🇬 Nigeria&apos;s Smart Logistics Platform
-          </Badge>
+      {/* Green gradient pool — top right */}
+      <div className="absolute -top-32 right-0 w-[55vw] h-[55vw] max-w-[700px] max-h-[700px] rounded-full bg-[#16a34a]/[0.07] blur-[100px] pointer-events-none" />
+      {/* Faint green bottom left */}
+      <div className="absolute bottom-0 -left-20 w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#16a34a]/[0.05] blur-[80px] pointer-events-none" />
 
-          <h1 className="text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-            Powering the Future of{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Smart Logistics
+      <div className="relative max-w-[1200px] mx-auto px-6 lg:px-10 pt-32 pb-24 lg:pt-40 lg:pb-32">
+
+        {/* Status pill */}
+        <div className="inline-flex items-center gap-2 mb-10 pl-1 pr-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] shadow-[0_0_6px_2px_rgba(74,222,128,0.5)]" />
+          <span className="text-[11px] font-medium text-zinc-400 tracking-wide">Nigeria-Based Technology Company</span>
+        </div>
+
+        {/* Main headline — left-heavy, intentionally wide */}
+        <div className="max-w-[820px]">
+          <h1 className="text-[52px] sm:text-[64px] lg:text-[78px] font-extrabold text-white leading-[1.0] tracking-[-0.03em] mb-6">
+            Building digital
+            <br />
+            solutions that{" "}
+            <span
+              className="relative inline-block"
+              style={{
+                background: "linear-gradient(135deg, #4ade80 0%, #16a34a 60%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              power the future.
             </span>
           </h1>
 
-          <p className="text-lg text-slate-400 leading-relaxed max-w-xl">
-            LOGI-Q Technologies Limited connects businesses, riders, and customers through cutting-edge technology — making dispatch, delivery, and supply chain management seamless across Nigeria.
+          <p className="text-[17px] text-zinc-400 leading-[1.75] max-w-[540px] mb-10 font-light">
+            LOGI-Q Technologies Limited designs and delivers innovative software products, digital platforms, and technology services that help businesses move faster in a digital world.
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 gap-2">
-              Explore Services <ArrowRight className="w-4 h-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-8 border-slate-600 text-slate-300 hover:bg-slate-800">
-              Learn More
-            </Button>
-          </div>
-
-          <div className="flex gap-10 pt-4">
-            {[["500+", "Deliveries Daily"], ["50+", "Partner Riders"], ["10+", "Enterprise Clients"]].map(([val, label]) => (
-              <div key={label}>
-                <p className="text-2xl font-bold text-white">{val}</p>
-                <p className="text-xs text-slate-400">{label}</p>
-              </div>
-            ))}
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#services"
+              className="group inline-flex items-center gap-2 h-12 px-6 rounded-[8px] bg-[#16a34a] hover:bg-[#15803d] text-white text-[14px] font-semibold transition-all shadow-lg shadow-[#16a34a]/20"
+            >
+              Explore Services
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+            <a
+              href="#about"
+              className="inline-flex items-center gap-2 h-12 px-6 rounded-[8px] border border-white/[0.1] text-zinc-300 hover:text-white hover:border-white/20 text-[14px] font-medium transition-all"
+            >
+              About Us
+            </a>
           </div>
         </div>
 
-        {/* Visual cards */}
-        <div className="hidden lg:grid grid-cols-2 gap-4">
+        {/* Bottom strip — capabilities list */}
+        <div className="mt-24 lg:mt-32 pt-8 border-t border-white/[0.07] flex flex-wrap gap-x-10 gap-y-4">
           {[
-            { icon: Package, title: "Smart Dispatch", desc: "Real-time rider matching and parcel tracking" },
-            { icon: Zap, title: "Fast Delivery", desc: "Same-day courier solutions across Nigeria" },
-            { icon: Globe, title: "Digital Platform", desc: "App-based logistics for businesses of all sizes" },
-            { icon: ArrowRight, title: "Supply Chain", desc: "End-to-end supply chain technology solutions" },
-          ].map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur hover:bg-white/10 transition-colors">
-              <div className="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center mb-3">
-                <Icon className="w-5 h-5 text-blue-400" />
-              </div>
-              <p className="font-semibold text-white text-sm">{title}</p>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">{desc}</p>
+            "Software Development",
+            "Digital Platforms",
+            "IT & Cloud Services",
+            "Tech Consulting",
+            "ICT Training",
+            "Product Innovation",
+          ].map((item, i) => (
+            <div key={item} className="flex items-center gap-3">
+              {i > 0 && <span className="hidden sm:block w-px h-3 bg-zinc-700" />}
+              <span className="text-[12px] text-zinc-500 font-medium tracking-wide">{item}</span>
             </div>
           ))}
         </div>
